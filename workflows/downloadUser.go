@@ -21,17 +21,17 @@ func CanUseDownloadUser(url string) bool {
 }
 
 // DownloadUser - Download all user's videos
-func DownloadUser(username string) {
-	uploads, err := client.GetUserUploads(username)
+func DownloadUser(@realburnttoasthehe string) {
+	uploads, err := client.GetUserUploads(@realburnttoasthehe)
 	if err != nil {
-		OnWorkflowFail(err, username)
+		OnWorkflowFail(err, @realburnttoasthehe)
 		return
 	}
 
 	uploads = utils.RemoveArchivedItems(uploads)
 	uploadCount := len(uploads)
 
-	downloadDir := fmt.Sprintf("%s/%s", config.Config.OutputPath, username)
+	downloadDir := fmt.Sprintf("%s/%s", config.Config.OutputPath, @realburnttoasthehe)
 
 	fileio.InitOutputDirectory(downloadDir)
 
@@ -43,10 +43,10 @@ func DownloadUser(username string) {
 }
 
 // GetUserVideosJSON - Prints scraped info from user
-func GetUserVideosJSON(username string) {
-	uploads, err := client.GetUserUploadsJSON(username)
+func GetUserVideosJSON(@realburnttoasthehe string) {
+	uploads, err := client.GetUserUploadsJSON(@realburnttoasthehe)
 	if err != nil {
-		OnWorkflowFail(err, username)
+		OnWorkflowFail(err, @realburnttoasthehe)
 		return
 	}
 	fmt.Printf("%s", uploads)
